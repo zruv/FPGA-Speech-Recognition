@@ -15,19 +15,17 @@ The system is designed to process audio input (16kHz) through a standard MFCC pi
 
 ## 📂 File Structure
 
-*   **`MFCC_Accelerator.vhd`**: The core VHDL hardware design. Currently implements the **Windowing** stage with placeholders for FFT and Mel Filtering.
-*   **`Mel_Coeff_Pkg.vhd`**: Auto-generated VHDL package containing:
-    *   `MEL_FILTERS`: Fixed-point Mel Filterbank coefficients.
-    *   `HAMMING_WINDOW`: Hamming window coefficients.
-    *   `TEST_AUDIO_DATA`: Sample audio data for simulation.
-*   **`MFCC_tb.vhd`**: VHDL Testbench that verifies the accelerator using the generated test data.
-*   **`generate_fpga_coefficients.m`**: MATLAB script that:
-    1.  Reads audio (`speech.wav`).
-    2.  Calculates Mel filters and Hamming window.
-    3.  Quantizes values to fixed-point.
-    4.  Generates the `Mel_Coeff_Pkg.vhd` file.
-*   **`run_simulation.sh`**: Bash script to clean, analyze, and run the GHDL simulation.
-*   **`speech.wav`**: Source audio file ("Hello, Welcome to the matrix") used for generating test data.
+*   **`src/`**: VHDL source files.
+    *   `MFCC_Accelerator.vhd`: The core hardware design.
+    *   `Mel_Coeff_Pkg.vhd`: Auto-generated VHDL package with coefficients.
+*   **`tb/`**: Testbench files.
+    *   `MFCC_tb.vhd`: Simulation testbench.
+*   **`scripts/`**: Automation and generation scripts.
+    *   `generate_fpga_coefficients.m`: MATLAB script for coefficient generation.
+    *   `run_simulation.sh`: Script to run GHDL simulation.
+*   **`data/`**: Input data.
+    *   `speech.wav`: Source audio file.
+*   **`docs/`**: Documentation and images.
 
 ## 🛠️ Prerequisites
 
@@ -47,8 +45,8 @@ sudo apt install ghdl gtkwave
 1.  **Run Simulation:**
     Execute the provided script to compile the VHDL files and run the simulation.
     ```bash
-    chmod +x run_simulation.sh
-    ./run_simulation.sh
+    chmod +x scripts/run_simulation.sh
+    ./scripts/run_simulation.sh
     ```
 
 2.  **View Waveforms:**
@@ -58,7 +56,7 @@ sudo apt install ghdl gtkwave
     ```
 
 3.  **(Optional) Regenerate Coefficients:**
-    If you modify system parameters (e.g., FFT size, Frame Length), open `generate_fpga_coefficients.m` in MATLAB and run it. This will overwrite `Mel_Coeff_Pkg.vhd` with new constants.
+    If you modify system parameters (e.g., FFT size, Frame Length), open `scripts/generate_fpga_coefficients.m` in MATLAB and run it. This will overwrite `src/Mel_Coeff_Pkg.vhd` with new constants.
 
 ## 📊 Status
 

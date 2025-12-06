@@ -1,0 +1,11 @@
+# GHDL Artifacts
+work-obj*.cf
+*.o
+e~*.o
+
+# Simulation Waveforms
+wave.ghw
+*.vcd
+
+# Temporary files
+*.log

@@ -25,7 +25,7 @@ FPGA_SCALE_FACTOR = 2^12;
 %% 2. Load Real Audio Signal (Test Bench Input) or Generate Synthetic
 % Specify the path to your WAV file.
 % IMPORTANT: Change this path to your actual audio file.
-audio_file_path = 'speech.wav'; % <--- CHANGE THIS TO YOUR WAV FILE PATH!
+audio_file_path = '../data/speech.wav'; % <--- CHANGE THIS TO YOUR WAV FILE PATH!
 
 % --- Choose one of the following two options ---
 
